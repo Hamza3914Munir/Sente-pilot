@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
+import '../views/home_screen.dart';
+import '../views/manage_orders_screen.dart';
+import '../views/profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

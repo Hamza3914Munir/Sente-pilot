@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sente_pilot/utils/colors.dart';
-import 'package:sente_pilot/views/home_screen.dart';
 import 'package:sente_pilot/views/resetpassword_screen.dart';
 import 'package:sente_pilot/views/signup_screen.dart';
 import '../viewmodels/cutom_textfield.dart';
+import '../viewmodels/bottom_navigation_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,7 +15,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _securityKeyController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool visible = true;
 
@@ -84,18 +83,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
-                CustomTextFormField(
-                  labelText: 'Security Key',
-                  prefixIcon: Icons.security,
-                  controller: _securityKeyController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your security key';
-                    }
-                    return null; // Valid input
-                  },
-                ),
-                const SizedBox(height: 20),
                 Builder(
                   builder: (context) {
                     return ElevatedButton(
@@ -110,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         // }
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                          MaterialPageRoute(builder: (context) => BottomNavBarScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -123,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         'Login',
                         style: TextStyle(
-                          color: AppColors.text,
+                          color: AppColors.buttonText,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),

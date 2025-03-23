@@ -16,7 +16,9 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _securityKeyController = TextEditingController();
-
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
+  String? _gender;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -46,12 +48,24 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 20),
                 CustomTextFormField(
-                  labelText: 'Name',
+                  labelText: 'First Name',
                   prefixIcon: Icons.person,
                   controller: _nameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your name';
+                      return 'Please enter your first name';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                CustomTextFormField(
+                  labelText: 'Last Name',
+                  prefixIcon: Icons.person,
+                  controller: _nameController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your last name';
                     }
                     return null;
                   },
@@ -71,6 +85,87 @@ class _SignupScreenState extends State<SignupScreen> {
                     return null;
                   },
                 ),
+                 const SizedBox(height: 20),
+                CustomTextFormField(
+                  labelText: 'Phone Number (+256xxxxxxxxx)',
+                  prefixIcon: Icons.phone,
+                  controller: _phoneController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your phone number';
+                    } else if (!RegExp(r'^\+256\d{9}$').hasMatch(value)) {
+                      return 'Please enter a valid Ugandan phone number (+256xxxxxxxxx)';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                CustomTextFormField(
+                  labelText: 'Date of Birth (DD/MM/YYYY)',
+                  prefixIcon: Icons.calendar_today,
+                  controller: _dobController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your date of birth';
+                    } else if (!RegExp(r'^\d{2}/\d{2}/\d{4}$').hasMatch(value)) {
+                      return 'Please enter a valid date in DD/MM/YYYY format';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Gender',
+                    prefixIcon: Icon(Icons.person , color : AppColors.primary),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.primary, width: 2),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.primary, width: 4),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: Colors.red, width: 2),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.primary, width: 4),
+                    ),
+                  ),
+                  value: _gender,
+                  items: ['Male', 'Female', 'Transgender']
+                      .map((gender) => DropdownMenuItem<String>(
+                            value: gender,
+                            child: Text(gender),
+                          ))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please select your gender';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                CustomTextFormField(
+                  labelText: 'Create Username',
+                  prefixIcon: Icons.person,
+                  controller: _securityKeyController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your security key';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 20),
                 CustomTextFormField(
                   labelText: 'Password',
@@ -81,18 +176,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       return 'Please enter your password';
                     } else if (value.length < 6) {
                       return 'Password must be at least 6 characters';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
-                CustomTextFormField(
-                  labelText: 'Security Key',
-                  prefixIcon: Icons.security,
-                  controller: _securityKeyController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your security key';
                     }
                     return null;
                   },
@@ -146,7 +229,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: const Text(
                       'Verify Email',
                       style: TextStyle(
-                        color: AppColors.text,
+                        color: AppColors.buttonText,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),

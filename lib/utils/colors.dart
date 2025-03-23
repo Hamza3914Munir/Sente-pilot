@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Base background color
+  // for button text
+  static const Color buttonText = Color(0xFFFFFFFF); // White
   static const Color background = Color(0xFFFFFFFF); // White
-
   // Primary color for major interactive elements/
   static const Color primary = Color(0xFF6A1B9A); // Deep Purple
 

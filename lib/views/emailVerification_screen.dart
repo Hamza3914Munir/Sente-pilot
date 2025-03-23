@@ -82,7 +82,7 @@ class EmailVerificationScreen extends StatelessWidget {
                   child: const Text(
                     'Resend Email',
                     style: TextStyle(
-                      color: AppColors.text,
+                      color: AppColors.buttonText,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -106,7 +106,7 @@ class EmailVerificationScreen extends StatelessWidget {
                 child: const Text(
                   'Change e-mail address',
                   style: TextStyle(
-                    color:AppColors.text,
+                    color:AppColors.buttonText,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),

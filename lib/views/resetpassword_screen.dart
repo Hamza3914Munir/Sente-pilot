@@ -121,7 +121,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     child: const Text(
                       'Reset Password',
                       style: TextStyle(
-                          color: AppColors.text,
+                          color: AppColors.buttonText,
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
                     ),

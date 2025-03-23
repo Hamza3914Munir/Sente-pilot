@@ -27,7 +27,7 @@ class CustomTextFormField extends StatelessWidget {
         style: const TextStyle(color: AppColors.text),
         decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: const TextStyle(color: AppColors.text),
+          labelStyle: const TextStyle(color: Colors.grey),
           prefixIcon: Icon(
             prefixIcon,
             color: AppColors.primary,

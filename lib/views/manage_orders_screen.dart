@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 
-class ManageOrdersScreen extends StatelessWidget {
-  const ManageOrdersScreen({super.key});
+class OrdersScreen extends StatelessWidget {
+  const OrdersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
