@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sente_pilot/utils/colors.dart';
 import 'package:sente_pilot/views/resetpassword_screen.dart';
 import 'package:sente_pilot/views/signup_screen.dart';
+import '../viewmodels/bottom_naviagtion_bar.dart';
 import '../viewmodels/cutom_textfield.dart';
-import '../viewmodels/bottom_navigation_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

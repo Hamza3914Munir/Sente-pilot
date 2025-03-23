@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../views/home_screen.dart';
+import '../views/manage_orders_screen.dart';
+import '../views/profile_screen.dart';
+
 class BottomNavBarScreen extends StatefulWidget {
   @override
   _BottomNavBarScreenState createState() => _BottomNavBarScreenState();
